@@ -1,0 +1,21 @@
+BasedOnStyle: LLVM
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+
+BreakBeforeBraces: Attach
+
+AllowShortFunctionsOnASingleLine: Inline
+
+PointerAlignment: Left
+
+SpacesInSquareBrackets: false
+SpaceInEmptyParentheses: false
+SpacesInParentheses: false
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeParens: ControlStatements
+SpaceAfterCStyleCast: false
+
+AccessModifierOffset: -4
+
+SpacesInContainerLiterals: true
