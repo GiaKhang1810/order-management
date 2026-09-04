@@ -11,16 +11,18 @@ class Manager {
     private:
         Queue queue;
     public:
-        void addOrder(const Order& order);
+        Manager() : queue() {}
+
+        void addOrder(const string& orderID, const string& date, const string& customer, double money);
         void deleteOrder(const string& orderID);
-        void processOrder();
+        // void processOrder();
 
         void changeStatus(const string& orderID, OrderStatus status);
 
-        void findOrder(const string& orderID) const;
-        void findOrder(const string& date) const;
-        void findOrder(OrderStatus status) const;
+        const Order* findOrder(const string& orderID) const;
+        // const Order* findOrder(const string& date) const;
+        // const Order* findOrder(OrderStatus status) const;
 
-        void showOrders() const;
-        void showStatistics() const;
+        // void showOrders() const;
+        // void showStatistics() const;
 };

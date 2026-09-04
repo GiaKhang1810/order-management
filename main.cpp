@@ -1,9 +1,6 @@
-// #include "Manager.hpp"
-// #include "Order.hpp"
-// #include "Queue.hpp"
-// #include "Statistics.hpp"
-
+#include "Manager.hpp"
 #include "Order.hpp"
+#include "Queue.hpp"
 
 #include <iostream>
 #include <string>
@@ -31,6 +28,8 @@ void menu() {
 }
 
 int main() {
+    Manager manager;
+
     while (true) {
         try {
             menu();
@@ -40,10 +39,40 @@ int main() {
 
             if (choice == 0)
                 break;
+
+            if (choice == 1) {
+                string orderID;
+
+                cout << "\n========================\nEnter Order ID: ";
+                cin >> orderID;
+
+                if (manager.findOrder(orderID) != nullptr) {
+                    cout << "========================\nOrder ID already exists. Please try again.\n========================\n\n";
+                    continue;
+                }
+
+                string date, customer;
+                double money;
+
+                cout << "Enter Date (YYYY-MM-DD): ";
+                cin >> date;
+
+                cout << "Enter Customer Name: ";
+                cin >> customer;
+
+                cout << "Enter Money Amount: ";
+                cin >> money;
+
+                cout << "========================\n\n";
+
+                manager.addOrder(orderID, date, customer, money);
+            }
         } catch (const exception& error) {
             cout << "Caught exception: " << error.what() << "\n";
         }
     }
+
+    cout << "Exiting Order Management System.\n";
 
     return 0;
 }
