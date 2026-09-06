@@ -1,27 +1,25 @@
-#include "Order.hpp"
+#include "Order.h"
 
 #include <iostream>
 #include <stdexcept>
-#include <string>
 
 using
     std::cout,
     std::invalid_argument,
     std::string;
 
-Order::Order(const string& identity, const string& date, const string& customer, double money, OrderStatus status) {
-    if (
-        identity.empty() ||
-        date.empty() ||
-        customer.empty() ||
-        money < 0
-    ) throw invalid_argument("Cannot create order with empty fields or negative money.");
-
-    this -> identity = identity;
-    this -> date = date;
-    this -> customer = customer;
-    this -> money = money;
-    this -> status = status;
+Order::Order(const string& identity, const string& date, const string& customer, double money, OrderStatus status) :
+    identity(identity),
+    date(date),
+    customer(customer),
+    money(money),
+    status(status) {
+        if (
+            identity.empty() ||
+            date.empty() ||
+            customer.empty() ||
+            money < 0
+        ) throw invalid_argument("Cannot create order with empty fields or negative money.");
 }
 
 const string& Order::getOrderID() const {
@@ -45,33 +43,29 @@ OrderStatus Order::getStatus() const {
 }
 
 void Order::setOrderID(const string& identity) {
-    if (
-        identity.empty()
-    ) throw invalid_argument("Order ID cannot be empty.");
+    if (identity.empty())
+        throw invalid_argument("Order ID cannot be empty.");
 
     this -> identity = identity;
 }
 
 void Order::setDate(const string& date) {
-    if (
-        date.empty()
-    ) throw invalid_argument("Order date cannot be empty.");
+    if (date.empty())
+        throw invalid_argument("Order date cannot be empty.");
 
     this -> date = date;
 }
 
 void Order::setCustomer(const string& customer) {
-    if (
-        customer.empty()
-    ) throw invalid_argument("Order customer cannot be empty.");
+    if (customer.empty())
+        throw invalid_argument("Order customer cannot be empty.");
 
     this -> customer = customer;
 }
 
 void Order::setMoney(double money) {
-    if (
-        money < 0
-    ) throw invalid_argument("Order money cannot be negative.");
+    if (money < 0)
+        throw invalid_argument("Order money cannot be negative.");
 
     this -> money = money;
 }

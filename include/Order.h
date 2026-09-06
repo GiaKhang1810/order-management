@@ -1,6 +1,5 @@
 #pragma once
 
-#include <iostream>
 #include <string>
 
 using std::string;
@@ -19,8 +18,9 @@ class Order {
         string customer;
         double money;
         OrderStatus status;
+
     public:
-        Order() {}
+        Order() : identity(""), date(""), customer(""), money(0), status(OrderStatus::PENDING) {}
 
         Order(
             const string& identity,
